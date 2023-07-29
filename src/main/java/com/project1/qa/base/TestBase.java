@@ -11,7 +11,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-//import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -65,7 +64,7 @@ public class TestBase {
 	public TestBase() {
 		try {
 			prop = new Properties();
-			FileInputStream ip = new FileInputStream(System.getProperty("user.dir") + "/src/main/java/com/power" + "/qa/config/config.properties");
+			FileInputStream ip = new FileInputStream(System.getProperty("user.dir") + "/src/main/java/com/project1" + "/qa/config/config.properties");
 			prop.load(ip);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -175,7 +174,7 @@ public class TestBase {
 	@BeforeMethod
 	public void setUp() throws InterruptedException, AWTException {
 		loginPage = new LoginPage(getDriver());
-		loginPage.login(readconfig.getUserName(),readconfig.getPassword());
+		loginPage.setLoginMethod(readconfig.getUserName(),readconfig.getPassword());
 		
 	}
 
