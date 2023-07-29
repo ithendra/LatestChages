@@ -41,14 +41,14 @@ public class LeavePage extends BasePage{
 		helper.waitForPageToLoad();
 		helper.highLightElement(driver, LeaveModule);
 		LeaveModule.click();
-		Reporter.log("<B><font color = 'blue'>Step5 .</font></B>clicked on leaveList link");
+		Reporter.log("<B><font color = 'blue'>Step1 .</font></B>clicked on leaveList link");
 		
 		helper.waitForPageToLoad();
 		fromDateTextfield.sendKeys("2022-09-27");
-		Reporter.log("<B><font color = 'blue'>Step6 .</font></B>entered from Date");
+		Reporter.log("<B><font color = 'blue'>Step2 .</font></B>entered from Date");
 		
 		toDateTextfield.sendKeys("2022-09-29");
-		Reporter.log("<B><font color = 'blue'>Step7 .</font></B>entered to Date");
+		Reporter.log("<B><font color = 'blue'>Step3 .</font></B>entered to Date");
 		
 		showLeaveDropDown.click();
 		List<WebElement> leaveList = driver.findElements(By.xpath("//div[@class='oxd-select-dropdown --positon-bottom']/div"));
@@ -59,7 +59,7 @@ public class LeavePage extends BasePage{
 				break;
 			}
 		}
-		Reporter.log("<B><font color = 'blue'>Step8 .</font></B>clicked on showLeave drop down");
+		Reporter.log("<B><font color = 'blue'>Step4 .</font></B>clicked on showLeave drop down");
 		
 		leaveType.click();
 		List<WebElement> listTypeDropdown = driver.findElements(By.xpath("//label[text()='Leave Type']/../following-sibling::div/div/div[@role='listbox']/li"));
@@ -71,7 +71,7 @@ public class LeavePage extends BasePage{
 				break;
 			}
 		}
-		Reporter.log("<B><font color = 'blue'>Step9 .</font></B>clicked leaveType drop down");
+		Reporter.log("<B><font color = 'blue'>Step5 .</font></B>clicked leaveType drop down");
 	}
 	
 }

@@ -8,13 +8,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import org.testng.Reporter;
 
 import com.project1.qa.base.TestBase;
-
-
+import com.project1.qa.util.Helpers;
 
 public class CandidatesPage extends BasePage {
+	
+	Helpers helper =new Helpers();
 	
 	public CandidatesPage(WebDriver driver) {
 		super(TestBase.getDriver());
@@ -61,15 +62,29 @@ public class CandidatesPage extends BasePage {
 	
 	public void addCandidate() throws InterruptedException {
 		
+		helper.waitForPageToLoad();
+		helper.highLightElement(driver, requirementLink);
 		requirementLink.click();
+		Reporter.log("<B><font color = 'blue'>Step1 .</font></B>clicked requirementLink");
 		
+		helper.waitForPageToLoad();
+		helper.highLightElement(driver, addButton);
 		addButton.click();
+		Reporter.log("<B><font color = 'blue'>Step2 .</font></B>clicked on addButton");
 		
-		firstName.sendKeys("virat");
+		helper.waitForPageToLoad();
+		helper.highLightElement(driver, firstName);
+		firstName.sendKeys(helper.getRandomString());
+		Reporter.log("<B><font color = 'blue'>Step3 .</font></B>Entered First name");
 		
-		lastName.sendKeys("kohli");
+		helper.highLightElement(driver, lastName);
+		lastName.sendKeys(helper.getRandomString());
+		Reporter.log("<B><font color = 'blue'>Step4 .</font></B>Entered Last name");
 		
+		helper.waitForPageToLoad();
+		helper.highLightElement(driver, vacencyDropDown);
 		vacencyDropDown.click();
+		Reporter.log("<B><font color = 'blue'>Step5 .</font></B>clicked on vacencyDropDown ");
 		
 		List<WebElement> vacencyList = driver.findElements(By.xpath("//label[text()='Vacancy']/../following-sibling::div//div[@class='oxd-select-dropdown --positon-bottom']/div/span"));
 		System.out.println("vacencyList : " + vacencyList.size());
@@ -78,18 +93,28 @@ public class CandidatesPage extends BasePage {
 			String actualText=ele.getText();
 			if(actualText.equals("Software Engineer")) {
 				Thread.sleep(2000);
+				helper.highLightElement(driver, ele);
 				ele.click();
+				Reporter.log("<B><font color = 'blue'>Step6 .</font></B>clicked vacency list type");
 				break;
 			}
 		}
 		
-		gmailText.sendKeys("virate@gmail.com");
+		helper.highLightElement(driver, gmailText);
+		gmailText.sendKeys(helper.getRandomString()+"@gmail.com");
+		Reporter.log("<B><font color = 'blue'>Step7 .</font></B>Entered gmail");
 		
+		helper.highLightElement(driver, contactNumField);
 		contactNumField.sendKeys("0123456789");
+		Reporter.log("<B><font color = 'blue'>Step8 .</font></B>Entered Contact Number");
 		
+		helper.highLightElement(driver, resumeUpload);
 		resumeUpload.sendKeys("C:\\Users\\Official\\Downloads\\sampleResume1.pdf");
+		Reporter.log("<B><font color = 'blue'>Step9 .</font></B>Uploaded resume");
 		
+		helper.highLightElement(driver, keywordField);
 		keywordField.sendKeys("Automation Tester");
+		Reporter.log("<B><font color = 'blue'>Step10 .</font></B>Entered Role");
 		
 		Actions action=new Actions(driver);
 		action.click(dateField);
@@ -103,9 +128,18 @@ public class CandidatesPage extends BasePage {
 		Thread.sleep(2000);
 	//	dateField.clear();
 		Thread.sleep(2000);
+		helper.highLightElement(driver, dateField);
 		dateField.sendKeys("2022-09-27");
-		
-		notesField.sendKeys("save the candiate details");
+		Reporter.log("<B><font color = 'blue'>Step11 .</font></B>Entered date");
 
+		helper.highLightElement(driver, notesField);
+		notesField.sendKeys("save the candiate details");
+		Reporter.log("<B><font color = 'blue'>Step12 .</font></B>Entered text in Notefield");
+		
+		helper.highLightElement(driver, saveButton);
+		saveButton.click();
+		Reporter.log("<B><font color = 'blue'>Step13 .</font></B>Clicked on Save Button");
+		helper.waitForPageToLoad();
+		
 	}
 }

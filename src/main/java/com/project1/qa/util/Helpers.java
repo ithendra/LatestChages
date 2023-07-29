@@ -218,7 +218,7 @@ public class Helpers extends TestBase {
 		    }
 		    String saltStr = salt.toString();
 		    return saltStr;
-		
+	
 		}
 		
 		public boolean containsAKeyword(String myString, String[] linkText){
